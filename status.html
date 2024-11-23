@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status - XPHN Bot</title>
+    <link rel="stylesheet" href="status.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="status-header">
+        <p class="h1">XPHN Bot Status</p>
+        <p class="p">No recent outages reported. View past status and outages at the external <a href="https://stats.uptimerobot.com/oP72vUD2oK" target="_blank">Status Page</a></p>
+    </header>
+    <main>
+        <section class="status-section">
+            <p class="h2">System Status</p>
+            <div class="status-card" id="bot-status-card">
+                <p class="h3">Bot Status</p>
+                <p id="bot-status">Online</p>
+            </div>
+            <div class="status-card online">
+                <p class="h3">Web Status</p>
+                <p id="api-status">Operational</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 XPHN Bot. All rights reserved.</p>
+    </footer>
+
+<script>
+    async function checkBotStatus() {
+        try {
+            const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://xphn-keep-alive.vercel.app/api/ping')}`, { method: 'GET'});
+            const responseText = await response.text();
+            var element = document.getElementById("bot-status-card");
+            var eText = document.getElementById("bot-status");
+            console.log(responseText);
+            if (responseText.includes('Pinged!')) {
+                element.classList.remove("offline");
+                element.classList.add("online");
+                eText.innerHTML = "Online";
+            } else {
+                element.classList.remove("online");
+                element.classList.add("offline");
+                eText.innerHTML = "Offline";
+            }
+        } catch (error) {
+            console.log("Couldn't get status.")
+            element.classList.remove("online");
+            element.classList.add("offline");
+            eText.innerHTML = "Offline";
+        }
+    }
+
+    // Check bot status when the page loads
+    checkBotStatus();
+
+    // Optionally, check status every 60 seconds
+    setInterval(checkBotStatus, 60000);  // Ping every 60 seconds
+</script>
+
+</body>
+</html>

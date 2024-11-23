@@ -1,0 +1,155 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #201f24;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings: "wdth" 95;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.hero {
+    height: 100vh;
+    background: url('bg.png') no-repeat center center/cover; /* Add a background image */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero #h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.5em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+#li1 {
+    animation: fadeInAnimation ease 3.1s;
+}
+#li2 {
+    animation: fadeInAnimation ease 3.0s;
+}
+#li3 {
+    animation: fadeInAnimation ease 3.3s;
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+    background: #22232b;
+    border-radius: 5px;
+    border-color: white;
+    border: solid 1px;
+    color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(255,255,255, 1);
+    opacity: 0; /* Hidden by default */
+    transform: translateX(-100px); /* Move off-screen */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+section.visible {
+    opacity: 1; /* Fade in */
+    transform: translateX(0); /* Move back to original position */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background: #357ABD;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: white;
+}
+
+* {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+html {
+    scroll-behavior: smooth; /* For smooth scroll on all links */
+}
+
+/* Fade in and fade out animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        border-color: white; /* Start with the highlight border color */
+        box-shadow: 0 0 15px white; /* Start with the highlight glow */
+    }
+    100% {
+        border: solid 1px white;
+        box-shadow: 0 0 10px white;
+    }
+}
+
+/* Highlight effect */
+.highlight {
+    border: 3px solid white; /* Highlight border */
+    box-shadow: 0 0 15px white; /* Highlight glow */
+    animation: fadeIn 0.5s forwards; /* Fade in */
+}
+
+/* Fade out effect for highlight only */
+.fade-out {
+    animation: fadeOut 0.5s forwards; /* Fade out */
+}
+ 
